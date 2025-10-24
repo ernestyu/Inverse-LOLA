@@ -233,6 +233,43 @@ def _log_dual_metrics_if_available(eval_dir: Path, reward_family: str) -> Option
     return {"bare": bare, "shaped": shaped}
 
 
+# === NEW: alignment (sample-level, shaped) logging ===
+
+def _log_alignment_if_available(eval_dir: Path, reward_family: str) -> Optional[dict]:
+    """
+    Read evaluation/alignment_metrics.json if present and log overall & per-stage stats.
+    Returns the loaded dict (or None).
+    """
+    path = eval_dir / "alignment_metrics.json"
+    data = _maybe_load_json(path)
+    if not data:
+        return None
+
+    # Overall per agent
+    for agent in data.get("agents", []):
+        a = agent.get("agent_id")
+        overall = agent.get("overall", {})
+        p = overall.get("pearson")
+        s = overall.get("spearman")
+        logging.info("[Experiment:%s][alignment] Agent %s - Pearson: %.4f | Spearman: %.4f",
+                     reward_family, a, p, s)
+
+    # Trend
+    for agent in data.get("agents", []):
+        a = agent.get("agent_id")
+        stages = agent.get("stages", [])
+        if not stages:
+            continue
+        stages_str = ", ".join(str(int(e.get("stage"))) for e in stages if "stage" in e)
+        pearson_str = ", ".join(f"{float(e.get('pearson')):.4f}" for e in stages if "pearson" in e)
+        spearman_str = ", ".join(f"{float(e.get('spearman')):.4f}" for e in stages if "spearman" in e)
+        logging.info("[Experiment:%s][alignment] Agent %s stages: %s", reward_family, a, stages_str)
+        logging.info("[Experiment:%s][alignment] Agent %s Pearson by stage: %s", reward_family, a, pearson_str)
+        logging.info("[Experiment:%s][alignment] Agent %s Spearman by stage: %s", reward_family, a, spearman_str)
+
+    return data
+
+
 # ----------------------------
 # Experiment orchestration
 # ----------------------------
@@ -259,9 +296,12 @@ def run_single_experiment(config: ExperimentConfig, reward_family: str, output_d
     evaluation: Optional[RewardEvaluationResult] = malfl_artifacts.evaluation
     _log_legacy_evaluation_block(reward_family, evaluation)
 
-    # 4) NEW: If dual-mode JSONs exist (bare/shaped), log them too (backward compatible)
+    # 4) (optional) bare/shaped table-level metrics
     eval_dir = malfl_output / "evaluation"
     dual_metrics = _log_dual_metrics_if_available(eval_dir, reward_family)
+
+    # === NEW: alignment logging & pass-through ===
+    alignment_summary = _log_alignment_if_available(eval_dir, reward_family)
 
     # 5) Build result payload (kept compatible with your summary writer)
     predicted_tables = [table.detach().cpu().numpy() for table in malfl_artifacts.reward_learning.predicted_reward_tables]
@@ -285,11 +325,12 @@ def run_single_experiment(config: ExperimentConfig, reward_family: str, output_d
         "trend_spearman": evaluation.trend_spearman if evaluation else [],
     }
 
-    # Optionally attach dual metrics to result (won't affect summary serialization below)
+    # Attach dual metrics (optional) and alignment (NEW)
     result = {
         "reward_family": reward_family,
         "evaluation": legacy_eval_dict,
-        "evaluation_modes": dual_metrics,  # may be None if files not present
+        "evaluation_modes": dual_metrics,            # may be None if files not present
+        "alignment_summary": alignment_summary,      # may be None if file not present
         "predicted_rewards": predicted_tables,
         "reward_artifacts": reward_paths,
     }

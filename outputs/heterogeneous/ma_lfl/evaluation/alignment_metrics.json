@@ -1,0 +1,72 @@
+{
+  "agents": [
+    {
+      "agent_id": 0,
+      "overall": {
+        "pearson": 0.8935161607825166,
+        "spearman": 0.7673163787166916
+      },
+      "stages": [
+        {
+          "stage": 0,
+          "pearson": NaN,
+          "spearman": NaN
+        },
+        {
+          "stage": 1,
+          "pearson": 0.8856842207169985,
+          "spearman": 0.8377528200084315
+        },
+        {
+          "stage": 2,
+          "pearson": 0.8799628994955713,
+          "spearman": 0.7002173083783547
+        },
+        {
+          "stage": 3,
+          "pearson": 0.9169450886480427,
+          "spearman": 0.8461729840648337
+        },
+        {
+          "stage": 4,
+          "pearson": 0.9036564572010048,
+          "spearman": 0.6690442420083264
+        }
+      ]
+    },
+    {
+      "agent_id": 1,
+      "overall": {
+        "pearson": 0.9166098462770461,
+        "spearman": 0.8068789228237724
+      },
+      "stages": [
+        {
+          "stage": 0,
+          "pearson": NaN,
+          "spearman": NaN
+        },
+        {
+          "stage": 1,
+          "pearson": 0.8088199285245301,
+          "spearman": 0.7872855487050177
+        },
+        {
+          "stage": 2,
+          "pearson": 0.9473416646853765,
+          "spearman": 0.8780405189499216
+        },
+        {
+          "stage": 3,
+          "pearson": 0.970013799204947,
+          "spearman": 0.7824586979847401
+        },
+        {
+          "stage": 4,
+          "pearson": 0.9063845709657737,
+          "spearman": 0.8254667310508186
+        }
+      ]
+    }
+  ]
+}

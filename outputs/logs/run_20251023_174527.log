@@ -1,0 +1,177 @@
+2025-10-23 17:45:27,833 | INFO | Logging initialized. Log file: outputs\logs\run_20251023_174527.log
+2025-10-23 17:45:27,833 | INFO | Configuration file: config.yaml
+2025-10-23 17:45:27,833 | INFO | Reward families to process: heterogeneous
+2025-10-23 17:45:27,833 | INFO | MA-SPI iterations=5, episodes/stage=11, episode_length=100
+2025-10-23 17:45:27,833 | INFO | MA-LfL reward epochs=10000, reward batch size=8192
+2025-10-23 17:45:27,834 | INFO | Log file located at outputs\logs\run_20251023_174527.log
+2025-10-23 17:45:27,834 | INFO | Running experiment for reward family: heterogeneous
+2025-10-23 17:45:27,834 | INFO | [Experiment:heterogeneous] Starting MA-SPI...
+2025-10-23 17:45:28,705 | INFO | [MA-SPI] Starting run with 5 stages, 11 episodes/stage, episode length 100
+2025-10-23 17:45:28,705 | INFO | [MA-SPI] Stage 1/5 - collecting trajectories...
+2025-10-23 17:45:29,161 | INFO | [MA-SPI] Stage 1/5 - collected 2/11 episodes
+2025-10-23 17:45:29,426 | INFO | [MA-SPI] Stage 1/5 - collected 4/11 episodes
+2025-10-23 17:45:29,739 | INFO | [MA-SPI] Stage 1/5 - collected 6/11 episodes
+2025-10-23 17:45:30,015 | INFO | [MA-SPI] Stage 1/5 - collected 8/11 episodes
+2025-10-23 17:45:30,278 | INFO | [MA-SPI] Stage 1/5 - collected 10/11 episodes
+2025-10-23 17:45:30,409 | INFO | [MA-SPI] Stage 1/5 - collected 11/11 episodes
+2025-10-23 17:45:30,410 | INFO | [MA-SPI] Stage 1/5 - Agent 0 avg episode reward: -137.000 (std 32.003)
+2025-10-23 17:45:30,410 | INFO | [MA-SPI] Stage 1/5 - Agent 1 avg episode reward: -113.455 (std 33.856)
+2025-10-23 17:45:30,410 | INFO | [MA-SPI] Stage 1/5 - dataset size: 1100 transitions
+2025-10-23 17:45:30,648 | INFO | [MA-SPI] Stage 1/5 - Q updates 20/100 (current batch 1100) [A0_Q_loss:2.7992, A1_Q_loss:3.2629]
+2025-10-23 17:45:30,731 | INFO | [MA-SPI] Stage 1/5 - Q updates 40/100 (current batch 1100) [A0_Q_loss:1.4247, A1_Q_loss:1.4398]
+2025-10-23 17:45:30,818 | INFO | [MA-SPI] Stage 1/5 - Q updates 60/100 (current batch 1100) [A0_Q_loss:1.0472, A1_Q_loss:0.8556]
+2025-10-23 17:45:30,902 | INFO | [MA-SPI] Stage 1/5 - Q updates 80/100 (current batch 1100) [A0_Q_loss:0.7593, A1_Q_loss:0.7030]
+2025-10-23 17:45:30,985 | INFO | [MA-SPI] Stage 1/5 - Q updates 100/100 (current batch 1100) [A0_Q_loss:0.6781, A1_Q_loss:0.5829]
+2025-10-23 17:45:31,021 | INFO | [MA-SPI] Stage 1/5 - policy updates 10/50 (current batch 1100) [A0_Policy_loss:0.0258, A1_Policy_loss:0.0191]
+2025-10-23 17:45:31,054 | INFO | [MA-SPI] Stage 1/5 - policy updates 20/50 (current batch 1100) [A0_Policy_loss:0.0080, A1_Policy_loss:0.0047]
+2025-10-23 17:45:31,089 | INFO | [MA-SPI] Stage 1/5 - policy updates 30/50 (current batch 1100) [A0_Policy_loss:0.0025, A1_Policy_loss:0.0015]
+2025-10-23 17:45:31,126 | INFO | [MA-SPI] Stage 1/5 - policy updates 40/50 (current batch 1100) [A0_Policy_loss:0.0009, A1_Policy_loss:0.0005]
+2025-10-23 17:45:31,168 | INFO | [MA-SPI] Stage 1/5 - policy updates 50/50 (current batch 1100) [A0_Policy_loss:0.0003, A1_Policy_loss:0.0001]
+2025-10-23 17:45:31,169 | INFO | [MA-SPI] Stage 1/5 - completed
+2025-10-23 17:45:31,169 | INFO | [MA-SPI] Stage 2/5 - collecting trajectories...
+2025-10-23 17:45:31,424 | INFO | [MA-SPI] Stage 2/5 - collected 2/11 episodes
+2025-10-23 17:45:31,673 | INFO | [MA-SPI] Stage 2/5 - collected 4/11 episodes
+2025-10-23 17:45:31,943 | INFO | [MA-SPI] Stage 2/5 - collected 6/11 episodes
+2025-10-23 17:45:32,197 | INFO | [MA-SPI] Stage 2/5 - collected 8/11 episodes
+2025-10-23 17:45:32,446 | INFO | [MA-SPI] Stage 2/5 - collected 10/11 episodes
+2025-10-23 17:45:32,578 | INFO | [MA-SPI] Stage 2/5 - collected 11/11 episodes
+2025-10-23 17:45:32,579 | INFO | [MA-SPI] Stage 2/5 - Agent 0 avg episode reward: 28.000 (std 26.700)
+2025-10-23 17:45:32,579 | INFO | [MA-SPI] Stage 2/5 - Agent 1 avg episode reward: 37.545 (std 30.013)
+2025-10-23 17:45:32,579 | INFO | [MA-SPI] Stage 2/5 - dataset size: 1100 transitions
+2025-10-23 17:45:32,672 | INFO | [MA-SPI] Stage 2/5 - Q updates 20/100 (current batch 1100) [A0_Q_loss:2.7064, A1_Q_loss:1.6625]
+2025-10-23 17:45:32,761 | INFO | [MA-SPI] Stage 2/5 - Q updates 40/100 (current batch 1100) [A0_Q_loss:1.1347, A1_Q_loss:1.2065]
+2025-10-23 17:45:32,851 | INFO | [MA-SPI] Stage 2/5 - Q updates 60/100 (current batch 1100) [A0_Q_loss:0.8264, A1_Q_loss:1.0221]
+2025-10-23 17:45:32,934 | INFO | [MA-SPI] Stage 2/5 - Q updates 80/100 (current batch 1100) [A0_Q_loss:0.7847, A1_Q_loss:0.9299]
+2025-10-23 17:45:33,016 | INFO | [MA-SPI] Stage 2/5 - Q updates 100/100 (current batch 1100) [A0_Q_loss:0.7379, A1_Q_loss:0.9823]
+2025-10-23 17:45:33,051 | INFO | [MA-SPI] Stage 2/5 - policy updates 10/50 (current batch 1100) [A0_Policy_loss:0.0239, A1_Policy_loss:0.0097]
+2025-10-23 17:45:33,085 | INFO | [MA-SPI] Stage 2/5 - policy updates 20/50 (current batch 1100) [A0_Policy_loss:0.0069, A1_Policy_loss:0.0035]
+2025-10-23 17:45:33,120 | INFO | [MA-SPI] Stage 2/5 - policy updates 30/50 (current batch 1100) [A0_Policy_loss:0.0026, A1_Policy_loss:0.0013]
+2025-10-23 17:45:33,157 | INFO | [MA-SPI] Stage 2/5 - policy updates 40/50 (current batch 1100) [A0_Policy_loss:0.0010, A1_Policy_loss:0.0005]
+2025-10-23 17:45:33,194 | INFO | [MA-SPI] Stage 2/5 - policy updates 50/50 (current batch 1100) [A0_Policy_loss:0.0004, A1_Policy_loss:0.0002]
+2025-10-23 17:45:33,195 | INFO | [MA-SPI] Stage 2/5 - completed
+2025-10-23 17:45:33,195 | INFO | [MA-SPI] Stage 3/5 - collecting trajectories...
+2025-10-23 17:45:33,471 | INFO | [MA-SPI] Stage 3/5 - collected 2/11 episodes
+2025-10-23 17:45:33,757 | INFO | [MA-SPI] Stage 3/5 - collected 4/11 episodes
+2025-10-23 17:45:34,046 | INFO | [MA-SPI] Stage 3/5 - collected 6/11 episodes
+2025-10-23 17:45:34,358 | INFO | [MA-SPI] Stage 3/5 - collected 8/11 episodes
+2025-10-23 17:45:34,694 | INFO | [MA-SPI] Stage 3/5 - collected 10/11 episodes
+2025-10-23 17:45:34,842 | INFO | [MA-SPI] Stage 3/5 - collected 11/11 episodes
+2025-10-23 17:45:34,844 | INFO | [MA-SPI] Stage 3/5 - Agent 0 avg episode reward: 81.909 (std 29.880)
+2025-10-23 17:45:34,845 | INFO | [MA-SPI] Stage 3/5 - Agent 1 avg episode reward: 99.000 (std 21.780)
+2025-10-23 17:45:34,845 | INFO | [MA-SPI] Stage 3/5 - dataset size: 1100 transitions
+2025-10-23 17:45:34,937 | INFO | [MA-SPI] Stage 3/5 - Q updates 20/100 (current batch 1100) [A0_Q_loss:0.6760, A1_Q_loss:1.3269]
+2025-10-23 17:45:35,027 | INFO | [MA-SPI] Stage 3/5 - Q updates 40/100 (current batch 1100) [A0_Q_loss:0.5028, A1_Q_loss:1.0306]
+2025-10-23 17:45:35,134 | INFO | [MA-SPI] Stage 3/5 - Q updates 60/100 (current batch 1100) [A0_Q_loss:0.4744, A1_Q_loss:0.9165]
+2025-10-23 17:45:35,240 | INFO | [MA-SPI] Stage 3/5 - Q updates 80/100 (current batch 1100) [A0_Q_loss:0.4708, A1_Q_loss:0.8587]
+2025-10-23 17:45:35,342 | INFO | [MA-SPI] Stage 3/5 - Q updates 100/100 (current batch 1100) [A0_Q_loss:0.4753, A1_Q_loss:0.8652]
+2025-10-23 17:45:35,386 | INFO | [MA-SPI] Stage 3/5 - policy updates 10/50 (current batch 1100) [A0_Policy_loss:0.0084, A1_Policy_loss:0.0074]
+2025-10-23 17:45:35,429 | INFO | [MA-SPI] Stage 3/5 - policy updates 20/50 (current batch 1100) [A0_Policy_loss:0.0026, A1_Policy_loss:0.0022]
+2025-10-23 17:45:35,463 | INFO | [MA-SPI] Stage 3/5 - policy updates 30/50 (current batch 1100) [A0_Policy_loss:0.0012, A1_Policy_loss:0.0010]
+2025-10-23 17:45:35,511 | INFO | [MA-SPI] Stage 3/5 - policy updates 40/50 (current batch 1100) [A0_Policy_loss:0.0005, A1_Policy_loss:0.0003]
+2025-10-23 17:45:35,546 | INFO | [MA-SPI] Stage 3/5 - policy updates 50/50 (current batch 1100) [A0_Policy_loss:0.0002, A1_Policy_loss:0.0001]
+2025-10-23 17:45:35,546 | INFO | [MA-SPI] Stage 3/5 - completed
+2025-10-23 17:45:35,547 | INFO | [MA-SPI] Stage 4/5 - collecting trajectories...
+2025-10-23 17:45:35,813 | INFO | [MA-SPI] Stage 4/5 - collected 2/11 episodes
+2025-10-23 17:45:36,133 | INFO | [MA-SPI] Stage 4/5 - collected 4/11 episodes
+2025-10-23 17:45:36,428 | INFO | [MA-SPI] Stage 4/5 - collected 6/11 episodes
+2025-10-23 17:45:36,749 | INFO | [MA-SPI] Stage 4/5 - collected 8/11 episodes
+2025-10-23 17:45:37,061 | INFO | [MA-SPI] Stage 4/5 - collected 10/11 episodes
+2025-10-23 17:45:37,214 | INFO | [MA-SPI] Stage 4/5 - collected 11/11 episodes
+2025-10-23 17:45:37,215 | INFO | [MA-SPI] Stage 4/5 - Agent 0 avg episode reward: 111.182 (std 28.258)
+2025-10-23 17:45:37,215 | INFO | [MA-SPI] Stage 4/5 - Agent 1 avg episode reward: 107.818 (std 33.406)
+2025-10-23 17:45:37,215 | INFO | [MA-SPI] Stage 4/5 - dataset size: 1100 transitions
+2025-10-23 17:45:37,328 | INFO | [MA-SPI] Stage 4/5 - Q updates 20/100 (current batch 1100) [A0_Q_loss:0.5399, A1_Q_loss:0.5783]
+2025-10-23 17:45:37,416 | INFO | [MA-SPI] Stage 4/5 - Q updates 40/100 (current batch 1100) [A0_Q_loss:0.4990, A1_Q_loss:0.4679]
+2025-10-23 17:45:37,508 | INFO | [MA-SPI] Stage 4/5 - Q updates 60/100 (current batch 1100) [A0_Q_loss:0.4352, A1_Q_loss:0.4425]
+2025-10-23 17:45:37,606 | INFO | [MA-SPI] Stage 4/5 - Q updates 80/100 (current batch 1100) [A0_Q_loss:0.4400, A1_Q_loss:0.4630]
+2025-10-23 17:45:37,721 | INFO | [MA-SPI] Stage 4/5 - Q updates 100/100 (current batch 1100) [A0_Q_loss:0.4382, A1_Q_loss:0.4540]
+2025-10-23 17:45:37,758 | INFO | [MA-SPI] Stage 4/5 - policy updates 10/50 (current batch 1100) [A0_Policy_loss:0.0044, A1_Policy_loss:0.0037]
+2025-10-23 17:45:37,808 | INFO | [MA-SPI] Stage 4/5 - policy updates 20/50 (current batch 1100) [A0_Policy_loss:0.0017, A1_Policy_loss:0.0017]
+2025-10-23 17:45:37,845 | INFO | [MA-SPI] Stage 4/5 - policy updates 30/50 (current batch 1100) [A0_Policy_loss:0.0009, A1_Policy_loss:0.0005]
+2025-10-23 17:45:37,882 | INFO | [MA-SPI] Stage 4/5 - policy updates 40/50 (current batch 1100) [A0_Policy_loss:0.0004, A1_Policy_loss:0.0002]
+2025-10-23 17:45:37,919 | INFO | [MA-SPI] Stage 4/5 - policy updates 50/50 (current batch 1100) [A0_Policy_loss:0.0002, A1_Policy_loss:0.0001]
+2025-10-23 17:45:37,920 | INFO | [MA-SPI] Stage 4/5 - completed
+2025-10-23 17:45:37,920 | INFO | [MA-SPI] Stage 5/5 - collecting trajectories...
+2025-10-23 17:45:38,245 | INFO | [MA-SPI] Stage 5/5 - collected 2/11 episodes
+2025-10-23 17:45:38,549 | INFO | [MA-SPI] Stage 5/5 - collected 4/11 episodes
+2025-10-23 17:45:38,817 | INFO | [MA-SPI] Stage 5/5 - collected 6/11 episodes
+2025-10-23 17:45:39,082 | INFO | [MA-SPI] Stage 5/5 - collected 8/11 episodes
+2025-10-23 17:45:39,348 | INFO | [MA-SPI] Stage 5/5 - collected 10/11 episodes
+2025-10-23 17:45:39,494 | INFO | [MA-SPI] Stage 5/5 - collected 11/11 episodes
+2025-10-23 17:45:39,495 | INFO | [MA-SPI] Stage 5/5 - Agent 0 avg episode reward: 112.818 (std 20.613)
+2025-10-23 17:45:39,495 | INFO | [MA-SPI] Stage 5/5 - Agent 1 avg episode reward: 118.273 (std 24.425)
+2025-10-23 17:45:39,495 | INFO | [MA-SPI] Stage 5/5 - dataset size: 1100 transitions
+2025-10-23 17:45:39,588 | INFO | [MA-SPI] Stage 5/5 - Q updates 20/100 (current batch 1100) [A0_Q_loss:0.5321, A1_Q_loss:0.4220]
+2025-10-23 17:45:39,670 | INFO | [MA-SPI] Stage 5/5 - Q updates 40/100 (current batch 1100) [A0_Q_loss:0.4620, A1_Q_loss:0.3786]
+2025-10-23 17:45:39,752 | INFO | [MA-SPI] Stage 5/5 - Q updates 60/100 (current batch 1100) [A0_Q_loss:0.4055, A1_Q_loss:0.3592]
+2025-10-23 17:45:39,837 | INFO | [MA-SPI] Stage 5/5 - Q updates 80/100 (current batch 1100) [A0_Q_loss:0.4141, A1_Q_loss:0.3651]
+2025-10-23 17:45:39,925 | INFO | [MA-SPI] Stage 5/5 - Q updates 100/100 (current batch 1100) [A0_Q_loss:0.4061, A1_Q_loss:0.3741]
+2025-10-23 17:45:39,963 | INFO | [MA-SPI] Stage 5/5 - policy updates 10/50 (current batch 1100) [A0_Policy_loss:0.0050, A1_Policy_loss:0.0036]
+2025-10-23 17:45:39,999 | INFO | [MA-SPI] Stage 5/5 - policy updates 20/50 (current batch 1100) [A0_Policy_loss:0.0021, A1_Policy_loss:0.0015]
+2025-10-23 17:45:40,042 | INFO | [MA-SPI] Stage 5/5 - policy updates 30/50 (current batch 1100) [A0_Policy_loss:0.0012, A1_Policy_loss:0.0005]
+2025-10-23 17:45:40,088 | INFO | [MA-SPI] Stage 5/5 - policy updates 40/50 (current batch 1100) [A0_Policy_loss:0.0006, A1_Policy_loss:0.0003]
+2025-10-23 17:45:40,126 | INFO | [MA-SPI] Stage 5/5 - policy updates 50/50 (current batch 1100) [A0_Policy_loss:0.0004, A1_Policy_loss:0.0001]
+2025-10-23 17:45:40,127 | INFO | [MA-SPI] Stage 5/5 - completed
+2025-10-23 17:45:40,163 | INFO | [Experiment:heterogeneous] MA-SPI completed. Artifacts saved to outputs\heterogeneous\ma_spi
+2025-10-23 17:45:40,163 | INFO | [Experiment:heterogeneous] Starting MA-LfL...
+2025-10-23 17:45:40,163 | INFO | [MA-LfL] Estimating policies...
+2025-10-23 17:45:40,163 | INFO | [MA-LfL][Policy] Stage 1/5 - preparing data
+2025-10-23 17:45:40,200 | INFO | [MA-LfL][Policy] Stage 1/5 - Agent 0: 10/10 epochs completed (loss=1.0855, baseline=1.6094)
+2025-10-23 17:45:40,229 | INFO | [MA-LfL][Policy] Stage 1/5 - Agent 1: 10/10 epochs completed (loss=1.0892, baseline=1.6094)
+2025-10-23 17:45:40,229 | INFO | [MA-LfL][Policy] Stage 2/5 - preparing data
+2025-10-23 17:45:40,259 | INFO | [MA-LfL][Policy] Stage 2/5 - Agent 0: 10/10 epochs completed (loss=0.9834, baseline=1.6094)
+2025-10-23 17:45:40,290 | INFO | [MA-LfL][Policy] Stage 2/5 - Agent 1: 10/10 epochs completed (loss=1.0025, baseline=1.6094)
+2025-10-23 17:45:40,291 | INFO | [MA-LfL][Policy] Stage 3/5 - preparing data
+2025-10-23 17:45:40,321 | INFO | [MA-LfL][Policy] Stage 3/5 - Agent 0: 10/10 epochs completed (loss=1.0129, baseline=1.6094)
+2025-10-23 17:45:40,355 | INFO | [MA-LfL][Policy] Stage 3/5 - Agent 1: 10/10 epochs completed (loss=1.0008, baseline=1.6094)
+2025-10-23 17:45:40,355 | INFO | [MA-LfL][Policy] Stage 4/5 - preparing data
+2025-10-23 17:45:40,388 | INFO | [MA-LfL][Policy] Stage 4/5 - Agent 0: 10/10 epochs completed (loss=0.9999, baseline=1.6094)
+2025-10-23 17:45:40,426 | INFO | [MA-LfL][Policy] Stage 4/5 - Agent 1: 10/10 epochs completed (loss=1.0191, baseline=1.6094)
+2025-10-23 17:45:40,427 | INFO | [MA-LfL][Policy] Stage 5/5 - preparing data
+2025-10-23 17:45:40,460 | INFO | [MA-LfL][Policy] Stage 5/5 - Agent 0: 10/10 epochs completed (loss=1.0304, baseline=1.6094)
+2025-10-23 17:45:40,486 | INFO | [MA-LfL][Policy] Stage 5/5 - Agent 1: 10/10 epochs completed (loss=0.9797, baseline=1.6094)
+2025-10-23 17:45:40,487 | INFO | [MA-LfL] Computing reward targets...
+2025-10-23 17:45:40,487 | INFO | [MA-LfL][Targets] Stage 1/4 - Agent 0
+2025-10-23 17:45:40,820 | INFO | [MA-LfL][Targets] Stage 1/4 - Agent 1
+2025-10-23 17:45:41,185 | INFO | [MA-LfL][Targets] Stage 2/4 - Agent 0
+2025-10-23 17:45:41,565 | INFO | [MA-LfL][Targets] Stage 2/4 - Agent 1
+2025-10-23 17:45:41,965 | INFO | [MA-LfL][Targets] Stage 3/4 - Agent 0
+2025-10-23 17:45:42,365 | INFO | [MA-LfL][Targets] Stage 3/4 - Agent 1
+2025-10-23 17:45:42,783 | INFO | [MA-LfL][Targets] Stage 4/4 - Agent 0
+2025-10-23 17:45:43,263 | INFO | [MA-LfL][Targets] Stage 4/4 - Agent 1
+2025-10-23 17:45:43,684 | INFO | [MA-LfL] Learning rewards...
+2025-10-23 17:45:43,692 | INFO | [MA-LfL][Reward] Agent 0 - dataset size=4400 (batch=4400, epochs=10000)
+2025-10-23 17:45:55,451 | INFO | [MA-LfL][Reward] Agent 0 - 1000/10000 epochs completed (latest loss=0.9855)
+2025-10-23 17:46:07,879 | INFO | [MA-LfL][Reward] Agent 0 - 2000/10000 epochs completed (latest loss=0.9852)
+2025-10-23 17:46:20,306 | INFO | [MA-LfL][Reward] Agent 0 - 3000/10000 epochs completed (latest loss=0.9846)
+2025-10-23 17:46:32,715 | INFO | [MA-LfL][Reward] Agent 0 - 4000/10000 epochs completed (latest loss=0.9830)
+2025-10-23 17:46:45,776 | INFO | [MA-LfL][Reward] Agent 0 - 5000/10000 epochs completed (latest loss=0.9824)
+2025-10-23 17:46:56,750 | INFO | [MA-LfL][Reward] Agent 0 - 6000/10000 epochs completed (latest loss=0.9815)
+2025-10-23 17:47:08,402 | INFO | [MA-LfL][Reward] Agent 0 - 7000/10000 epochs completed (latest loss=0.9821)
+2025-10-23 17:47:19,823 | INFO | [MA-LfL][Reward] Agent 0 - 8000/10000 epochs completed (latest loss=0.9813)
+2025-10-23 17:47:32,388 | INFO | [MA-LfL][Reward] Agent 0 - 9000/10000 epochs completed (latest loss=0.9818)
+2025-10-23 17:47:44,581 | INFO | [MA-LfL][Reward] Agent 0 - 10000/10000 epochs completed (latest loss=0.9813)
+2025-10-23 17:47:44,586 | INFO | [MA-LfL][Reward] Agent 1 - dataset size=4400 (batch=4400, epochs=10000)
+2025-10-23 17:47:55,660 | INFO | [MA-LfL][Reward] Agent 1 - 1000/10000 epochs completed (latest loss=0.8236)
+2025-10-23 17:48:06,538 | INFO | [MA-LfL][Reward] Agent 1 - 2000/10000 epochs completed (latest loss=0.8238)
+2025-10-23 17:48:17,627 | INFO | [MA-LfL][Reward] Agent 1 - 3000/10000 epochs completed (latest loss=0.8272)
+2025-10-23 17:48:28,567 | INFO | [MA-LfL][Reward] Agent 1 - 4000/10000 epochs completed (latest loss=0.8245)
+2025-10-23 17:48:39,772 | INFO | [MA-LfL][Reward] Agent 1 - 5000/10000 epochs completed (latest loss=0.8235)
+2025-10-23 17:48:51,264 | INFO | [MA-LfL][Reward] Agent 1 - 6000/10000 epochs completed (latest loss=0.8269)
+2025-10-23 17:49:02,721 | INFO | [MA-LfL][Reward] Agent 1 - 7000/10000 epochs completed (latest loss=0.8237)
+2025-10-23 17:49:13,801 | INFO | [MA-LfL][Reward] Agent 1 - 8000/10000 epochs completed (latest loss=0.8237)
+2025-10-23 17:49:24,790 | INFO | [MA-LfL][Reward] Agent 1 - 9000/10000 epochs completed (latest loss=0.8348)
+2025-10-23 17:49:35,737 | INFO | [MA-LfL][Reward] Agent 1 - 10000/10000 epochs completed (latest loss=0.8244)
+2025-10-23 17:49:35,737 | INFO | [MA-LfL] Evaluating rewards...
+2025-10-23 17:49:36,514 | INFO | [MA-LfL] Pipeline complete.
+2025-10-23 17:49:36,514 | INFO | [Experiment:heterogeneous] MA-LfL completed. Artifacts saved to outputs\heterogeneous\ma_lfl
+2025-10-23 17:49:36,514 | INFO | [Experiment:heterogeneous] Agent 0 metrics - Pearson: 0.0977 | Spearman: 0.1577
+2025-10-23 17:49:36,514 | INFO | [Experiment:heterogeneous] Agent 1 metrics - Pearson: 0.0840 | Spearman: 0.0884
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Trend stages: 1, 2, 3, 4
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Trend Pearson: 0.3932, 0.5084, 0.5981, 0.6540
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Trend Spearman: 0.4026, 0.5305, 0.5699, 0.6515
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Agent 0 correlation >=0.4 ? NO
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Agent 1 correlation >=0.4 ? NO
+2025-10-23 17:49:36,515 | INFO | [Experiment:heterogeneous] Correlation trend non-decreasing? YES
+2025-10-23 17:49:36,517 | INFO | Summary saved to outputs\summary.json
+2025-10-23 17:49:36,517 | INFO | Run complete.

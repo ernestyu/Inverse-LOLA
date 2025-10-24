@@ -115,3 +115,4 @@ docker-compose.override.yml
 # Demo files
 demo/
 docs/
+outputs/

@@ -29,12 +29,12 @@ maspi:
 
 malfl:
   reward_epochs: 20000
-  reward_lr: 0.001
-  shaping_lr: 1.0e-4
+  reward_lr: 0.0005
+  shaping_lr: 1e-5
   potential_epochs: 1000
   kl_penalty: 0.0
   prob_clip: 1.0e-6
-  potential_reg_weight: 0.21
+  potential_reg_weight: 0.0005
   policy_estimation_lr: 0.1
   policy_estimation_epochs: 10
   policy_entropy_coef: 0.3

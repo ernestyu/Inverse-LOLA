@@ -1,4 +1,15 @@
-﻿# MA-LfL 复现
+﻿---
+title: "MA-LfL 项目复现空间"
+emoji: "🧠"
+colorFrom: "purple"
+colorTo: "blue"
+sdk: "gradio"
+sdk_version: "4.39.0"
+app_file: "app.py"
+pinned: false
+license: "mit"
+---
+# MA-LfL 复现
 
 本仓库实现了论文 **"Multi-Agent Learning from Learners"**（多智能体从学习者中学习，简称 MA-LfL）的完整复现流程。代码遵循 `docs/engineering_guide.md` 中的工程蓝图，复现了 MA-SPI + MA-LfL 基线，包括策略估计、奖励恢复、相关性指标和诊断图。
 
@@ -91,3 +102,4 @@ python main.py --reward-families homogeneous heterogeneous
 - 所有计算共享一个全局温度 $\alpha$，通过 `ExperimentConfig` 强制执行并传播到每个模块。
 - 代码保存了完整的中间产物（策略、轨迹、奖励网络），以满足 `docs/engineering_guide.md` 中的可复现性清单要求。
 - 交叉相关性诊断和趋势图提供了关于奖励恢复质量的即时反馈，与论文中的表 1/表 2 和图 3 相呼应。
+

@@ -1,0 +1,14 @@
+# --extra-index-url 告诉 pip 除了默认的 PyPI，还去这个地址搜索包
+# 这正是安装 GPU 版 PyTorch 的关键
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+# PyTorch 相关的核心包
+torch
+torchvision
+torchaudio
+
+# 项目的其他依赖包
+numpy
+matplotlib
+seaborn
+pyyaml

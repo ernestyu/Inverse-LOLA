@@ -13,3 +13,5 @@ matplotlib
 seaborn
 pyyaml
 gradio
+baselines
+mujoco_py

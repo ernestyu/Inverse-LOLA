@@ -1,9 +1,0 @@
-predicted_family,target_family,agent_id,pearson,spearman
-homogeneous,homogeneous,0,-0.134376,-0.080727
-homogeneous,homogeneous,1,-0.203282,-0.190385
-homogeneous,heterogeneous,0,0.132906,0.154611
-homogeneous,heterogeneous,1,0.113039,0.170706
-heterogeneous,homogeneous,0,0.011929,0.030161
-heterogeneous,homogeneous,1,0.069563,0.103392
-heterogeneous,heterogeneous,0,-0.217684,-0.191180
-heterogeneous,heterogeneous,1,-0.084922,-0.067347

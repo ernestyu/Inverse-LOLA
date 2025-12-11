@@ -1,4 +1,12 @@
-﻿# Project 9 — Multi-Agent Learning from Learners and I-LOLA
+﻿---
+title: "Project 9 - Multi-Agent RL"
+emoji: "🤖"
+colorFrom: "blue"
+colorTo: "purple"
+sdk: "gradio"
+pinned: false
+---
+# Project 9 — Multi-Agent Learning from Learners and I-LOLA
 
 本仓库是 Project 9 的工程实现代码，用来研究：
 

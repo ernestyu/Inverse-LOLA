@@ -1,0 +1,9 @@
+{
+  "env_name": "multiwalker",
+  "algorithm": "ilola",
+  "seed": 0,
+  "err_1a": 0.0,
+  "err_1b": 0.0004953093205889066,
+  "final_loss": 0.05294932828394389,
+  "omega_norm": 2.123050072235565
+}

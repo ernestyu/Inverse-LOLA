@@ -1,0 +1,11 @@
+{
+  "env_name": "gridworld",
+  "algorithm": "ma_lfl",
+  "seed": 0,
+  "err_1a": 9.107636287808418e-06,
+  "err_1b": 9.107636287808418e-06,
+  "diagnostics": {
+    "weight_pcc": -0.4599031980765477,
+    "weight_rmse": 0.26929509433099125
+  }
+}

@@ -1,14 +1,14 @@
 --extra-index-url https://download.pytorch.org/whl/cu128
 
-torch
-torchvision
-torchaudio
-
-numpy
-pettingzoo
-gymnasium
-matplotlib
-scipy
-cma
-tqdm
-omegaconf
+torch==2.9.1+cu128
+torchvision==0.24.1+cu128
+torchaudio==2.9.1+cu128
+numpy==2.2.6
+pettingzoo==1.25.0
+gymnasium==1.2.2
+pygame==2.6.1
+matplotlib==3.10.7
+scipy==1.15.3
+cma==4.4.0
+tqdm==4.67.1
+omegaconf==2.3.0

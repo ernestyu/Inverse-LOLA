@@ -1,0 +1,19 @@
+# Task 3: Multiwalker
+env: multiwalker
+config_name: t3_multiwalker
+num_agents: 3
+max_cycles: 75
+steps_per_rollout: 32
+updates: 2
+gamma: 0.95
+gae_lambda: 0.95
+lr: 0.0003
+clip_eps: 0.2
+entropy_coef: 0.01
+vf_coef: 0.5
+minibatch_size: 32
+ppo_epochs: 2
+induced_updates: 5
+induced_rollout_steps: 64
+induced_eval_every: 1
+eval_episodes: 5

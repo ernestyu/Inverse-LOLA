@@ -1,0 +1,11 @@
+# Task 1: GridWorld
+env: gridworld
+config_name: t1_gridworld
+features:
+  type: indicator
+num_phases: 6
+episodes_per_phase: 5
+max_steps: 20
+gamma: 0.95
+lr: 0.2
+temperature: 1.0

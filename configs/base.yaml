@@ -1,0 +1,10 @@
+# Base configuration placeholder
+seed: 0
+log_dir: outputs/logs
+figure_dir: outputs/figures
+report_dir: outputs/reports
+batch_size: 32
+learning_rate: 0.001
+num_steps: 1000
+features:
+  type: placeholder

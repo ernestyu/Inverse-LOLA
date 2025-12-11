@@ -1,0 +1,15 @@
+# Task 2: MPE simple spread
+env: mpe_simple_spread
+config_name: t2_mpe_simple_spread
+num_agents: 3
+max_cycles: 50
+steps_per_rollout: 64
+updates: 4
+gamma: 0.95
+gae_lambda: 0.95
+lr: 0.0003
+clip_eps: 0.2
+entropy_coef: 0.01
+vf_coef: 0.5
+minibatch_size: 64
+ppo_epochs: 3

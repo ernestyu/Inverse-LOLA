@@ -1,0 +1,9 @@
+{
+  "env_name": "mpe_simple_spread",
+  "algorithm": "ilola",
+  "seed": 0,
+  "err_1a": 1.0331203639583582e-06,
+  "err_1b": 1.0917134325023588e-06,
+  "final_loss": 0.16620079336124483,
+  "omega_norm": 3.723002598474569
+}

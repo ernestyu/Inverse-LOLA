@@ -1,0 +1,54 @@
+{
+  "env_name": "mpe_simple_spread",
+  "algorithm": "ma_lfl",
+  "mode": "mismatch",
+  "seed": 3,
+  "err_1a": 1.9155648586597207,
+  "err_1b": 6.445518677345103e-08,
+  "data_path": "outputs\\data\\t2\\t2_ppo_seed3_20251228-133902.pkl",
+  "data_seed_inferred": 3,
+  "diagnostics": {
+    "action_dim": 5,
+    "feature_dim": 23,
+    "w_true_norm": 17.819169753398175,
+    "w_hat_norm": 0.004531229530168991,
+    "theta_step_norm": 0.0015517589191304095,
+    "phi_means_shape": [
+      5,
+      23
+    ],
+    "max_diff_pi_real_hat": 0.00012122774822892479,
+    "max_diff_pi_real_true": 0.45755050404043807,
+    "best_pair_idx": 0,
+    "best_pair_step_norm": 0.3174320734021013,
+    "xphase_train_pair": [
+      0,
+      1
+    ],
+    "xphase_test_pair": [
+      1,
+      2
+    ],
+    "w_hat_01_norm": 0.004531229530168991,
+    "phi_train_shape": [
+      5,
+      23
+    ],
+    "phi_test_shape": [
+      5,
+      23
+    ],
+    "max_diff_pi_real_hat_xphase": 0.00026205971232470815,
+    "max_diff_pi_real_true_xphase": 0.45727784856595255,
+    "holdout_ratio": 0.5,
+    "holdout_train_size": 75,
+    "holdout_test_size": 75,
+    "w_hat_holdout_norm": 0.004486791300817319,
+    "max_diff_pi_real_hat_holdout": 8.805470917416791e-07,
+    "max_diff_pi_real_true_holdout": 0.4575199633297943
+  },
+  "err_1a_xphase": 1.9150431102361305,
+  "err_1b_xphase": 4.659408684229325e-07,
+  "err_1a_holdout": 1.9148727086396795,
+  "err_1b_holdout": 4.7388774213212065e-12
+}

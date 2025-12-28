@@ -1,0 +1,12 @@
+{
+  "env_name": "multiwalker",
+  "algorithm": "ilola",
+  "seed": 4,
+  "err_1a": 0.0,
+  "err_1b": 0.01240912638604641,
+  "final_loss": 0.03425586580848228,
+  "omega_norm": 2.635453135014945,
+  "data_path": "outputs\\data\\t3\\t3_ppo_seed4_20251228-134014.pkl",
+  "data_seed_inferred": 4,
+  "mode": "ilola"
+}

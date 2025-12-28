@@ -12,3 +12,5 @@ scipy==1.15.3
 cma==4.4.0
 tqdm==4.67.1
 omegaconf==2.3.0
+pandas==2.1.2
+evaluation==0.3.5

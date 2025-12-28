@@ -1,0 +1,12 @@
+{
+  "env_name": "mpe_simple_spread",
+  "algorithm": "ilola",
+  "seed": 1,
+  "err_1a": 1.6193637476880703e-07,
+  "err_1b": 2.7933424570552386e-07,
+  "final_loss": 0.2240145617495232,
+  "omega_norm": 3.929608500076792,
+  "data_path": "outputs\\data\\t2\\t2_ppo_seed1_20251228-133728.pkl",
+  "data_seed_inferred": 1,
+  "mode": "stageB"
+}

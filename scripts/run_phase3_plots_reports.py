@@ -13,6 +13,9 @@ from evaluation.plots import (  # noqa: E402
     plot_t1_kl,
     plot_t1_reward_heatmap,
     plot_t2_kl_compare,
+    plot_t2_compare_lfl_ilola,
+    plot_t2_stageA_vs_stageB,
+    plot_t2_induced_returns,
     plot_t3_kl,
     plot_t3_induced_returns,
 )
@@ -23,6 +26,15 @@ def main() -> None:
     plot_t1_kl(seed=0)
     plot_t1_reward_heatmap()
     plot_t2_kl_compare(seed=0)
+    plot_t2_compare_lfl_ilola(seed=0)
+    plot_t2_stageA_vs_stageB(seed=0)
+    t2_induced = REPO_ROOT / "outputs" / "induced" / "t2_induced_seed0.json"
+    if t2_induced.exists():
+        with t2_induced.open("r", encoding="utf-8") as f:
+            induced_result = json.load(f)
+        plot_t2_induced_returns(induced_result, seed=0)
+    else:
+        print("[phase3] skip T2 induced plot (result not found).")
 
     generate_report_t1("configs/t1_gridworld.yaml", seed=0)
     generate_report_t2("configs/t2_mpe_simple_spread.yaml", seed=0)

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+import argparse
 
 import numpy as np
 import torch
@@ -20,6 +21,17 @@ from models.dynamics import step_lola  # noqa: E402
 import json
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run I-LOLA Stage B on T3 PPO data")
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--alpha-scale", type=float, default=0.5)
+    parser.add_argument("--dim-limit", type=int, default=16)
+    parser.add_argument("--num-iters", type=int, default=5)
+    parser.add_argument("--config", type=str, default="configs/t3_multiwalker.yaml")
+    parser.add_argument("--data-dir", type=str, default="outputs/data/t3")
+    return parser.parse_args()
+
+
 def build_multiwalker_policy(env, device: torch.device):
     example_agent = env.agents[0]
     obs_dim = int(np.prod(env.observation_space(example_agent).shape))
@@ -31,16 +43,25 @@ def build_multiwalker_policy(env, device: torch.device):
 
 
 def main() -> None:
-    config_path = "configs/t3_multiwalker.yaml"
-    cfg = OmegaConf.load(config_path)
-    seed = 0
-    alpha_scale = 0.5
-    dim_limit = 16
+    args = parse_args()
+    cfg = OmegaConf.load(args.config)
+    seed = args.seed
+    alpha_scale = args.alpha_scale
+    dim_limit = args.dim_limit
 
     ilola_cfg = {
-        "data_dir": "outputs/data/t3",
+        "data_dir": args.data_dir,
     }
-    result, path, phases = run_ilola_t3(ilola_cfg, num_iters=5, alpha_scale=alpha_scale, dim_limit=dim_limit)
+    result, path, phases = run_ilola_t3(
+        ilola_cfg, num_iters=args.num_iters, alpha_scale=alpha_scale, dim_limit=dim_limit, seed=seed
+    )
+    path_seed = None
+    for tok in Path(path).stem.split("_"):
+        if tok.startswith("seed") and tok[4:].isdigit():
+            path_seed = int(tok[4:])
+            break
+    if path_seed is not None and path_seed != seed:
+        raise SystemExit(f"[ilola-t3] data seed mismatch: path has seed{path_seed}, expected seed{seed}")
     print(f"[ilola-t3] data={path}")
     print(f"  CMA-ES iters={len(result.losses)}, final_loss={result.losses[-1]:.6f}")
     print(f"  omega_norm={np.linalg.norm(result.w_hat):.4f}")
@@ -86,7 +107,7 @@ def main() -> None:
         device=device,
     )
     err_1a = 0.0
-    err_1b = max(float(err_1b_raw), 1e-12)
+    err_1b = max(float(err_1b_raw), 0.0)
     print(f"  err_1a={err_1a:.6f}, err_1b={err_1b:.6f}")
 
     metrics = {
@@ -97,6 +118,9 @@ def main() -> None:
         "err_1b": err_1b,
         "final_loss": float(result.losses[-1]),
         "omega_norm": float(np.linalg.norm(result.w_hat)),
+        "data_path": str(path),
+        "data_seed_inferred": seed,
+        "mode": "ilola",
     }
     metrics_dir = Path("outputs/metrics")
     metrics_dir.mkdir(parents=True, exist_ok=True)

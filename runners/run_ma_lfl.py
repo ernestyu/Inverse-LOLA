@@ -32,7 +32,7 @@ def main() -> None:
     cfg = load_config(Path(args.config))
     print(f"[run_ma_lfl] Config: {args.config}")
 
-    result = run_baseline_lfl(cfg)
+    result, data_path = run_baseline_lfl(cfg, seed=args.seed)
     env = GridWorld()
     # ground-truth reward: simple goal reward at terminal state
     true_w = np.zeros(result.feature_dim, dtype=float)
@@ -52,6 +52,9 @@ def main() -> None:
         "err_1a": err_1a,
         "err_1b": err_1b,
         "diagnostics": diagnostics,
+        "data_path": str(data_path),
+        "data_seed_inferred": args.seed,
+        "mode": "match",
     }
 
     print(json.dumps({"err_1a": err_1a, "err_1b": err_1b, "feature_dim": result.feature_dim, "diagnostics": diagnostics}, indent=2))

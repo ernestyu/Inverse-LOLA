@@ -1,0 +1,12 @@
+{
+  "env_name": "mpe_simple_spread",
+  "algorithm": "ilogel_stageA",
+  "seed": 3,
+  "err_1a": 1.3083785326403676e-07,
+  "err_1b": 1.3083785326403676e-07,
+  "omega_norm": 751.6621103748511,
+  "num_iters": 5,
+  "data_path": "outputs\\data\\t2\\t2_ppo_seed3_20251228-133902.pkl",
+  "data_seed_inferred": 3,
+  "mode": "stageA"
+}

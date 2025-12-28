@@ -7,7 +7,7 @@ from torch.nn.utils import vector_to_parameters
 
 from envs.gridworld import GridWorld
 from learners.ma_spi.gridworld_ma_spi import TablePolicy
-from models.feature_maps import indicator_feature_gridworld
+from models.feature_maps import indicator_feature_gridworld, mpe_simple_features
 from models.dynamics import step_lola
 from data_gen.adapters import LearningPhaseData
 from typing import Callable, Iterable
@@ -115,6 +115,17 @@ def _softmax(x: np.ndarray) -> np.ndarray:
     return exp / np.clip(exp.sum(), 1e-8, None)
 
 
+def align_reward_vector(w_src: np.ndarray | None, target_dim: int) -> np.ndarray:
+    """Pad or truncate reward vector to target_dim; return zeros if None."""
+    if w_src is None:
+        return np.zeros(target_dim, dtype=float)
+    w_src = np.asarray(w_src, dtype=float).flatten()
+    if w_src.size >= target_dim:
+        return w_src[:target_dim]
+    pad = np.zeros(target_dim - w_src.size, dtype=float)
+    return np.concatenate([w_src, pad], axis=0)
+
+
 def collect_states_from_phase(phase: LearningPhaseData, max_states: int = 256, seed: int = 0) -> np.ndarray:
     """Collect up to max_states flattened observations from a LearningPhaseData."""
     rng = np.random.default_rng(seed)
@@ -183,9 +194,7 @@ def kl_mc_gaussian(
             logp = dist_p.log_prob(a_clipped).sum(-1)
             logq = dist_q.log_prob(a_clipped).sum(-1)
             kl_sample = float((logp - logq).mean().item())
-            if i == 0:
-                print(f"[debug-t3-kl] sample KL at first state = {kl_sample}")
-            kl_vals.append(kl_sample)
+            kl_vals.append(max(kl_sample, 0.0))
         return float(np.mean(kl_vals))
 
 
@@ -258,11 +267,106 @@ def compute_t2_ilola_kl_errors(
     return err_1a, err_1b
 
 
+def compute_action_feature_means(states: np.ndarray, action_dim: int) -> np.ndarray:
+    """Compute mean features for each discrete action placeholder in MPE-style PPO rollouts."""
+    states_np = np.asarray(states, dtype=np.float32)
+    actions = np.eye(action_dim, dtype=float)
+    phi_means: list[np.ndarray] = []
+    for act_vec in actions:
+        feats = []
+        for s in states_np:
+            phi = mpe_simple_features(s, act_vec, action_dim=action_dim)
+            feats.append(phi.detach().cpu().numpy())
+        phi_means.append(np.mean(feats, axis=0))
+    return np.stack(phi_means, axis=0)
+
+
+def compute_t2_ma_lfl_kl_errors(
+    phases: list[LearningPhaseData],
+    reward_true: np.ndarray | None,
+    reward_hat: np.ndarray,
+    dim_limit: int = 32,
+    seed: int = 0,
+    alpha: float = 0.5,
+    states: np.ndarray | None = None,
+    phi_means: np.ndarray | None = None,
+    debug: bool = False,
+) -> tuple[float, float, dict]:
+    """KL errors for MA-LfL mismatch on T2 PPO data using a soft-improvement lookahead."""
+    if len(phases) < 2:
+        raise SystemExit("Need at least two phases for T2 KL computation.")
+    rng = np.random.default_rng(seed)
+    p_t = phases[-2]
+    p_tp1 = phases[-1]
+    if not isinstance(p_t.policy_params, dict):
+        raise SystemExit("Expected dict policy_params for T2 phases.")
+    theta_t_full = next(iter(p_t.policy_params.values()))
+    theta_tp1_full = next(iter(p_tp1.policy_params.values()))
+    k = min(dim_limit, len(theta_t_full))
+
+    rollout = p_tp1.trajectories[0]
+    aid = next(iter(rollout.agent_rollouts.keys()))
+    first_action = np.asarray(rollout.agent_rollouts[aid].actions[0]).reshape(-1)
+    action_dim = min(len(first_action), k)
+
+    theta_t = np.asarray(theta_t_full[:action_dim], dtype=float)
+    theta_tp1 = np.asarray(theta_tp1_full[:action_dim], dtype=float)
+
+    states_np = states if states is not None else collect_states_from_phase(p_t, max_states=256, seed=seed)
+    phi_means_arr = phi_means if phi_means is not None else compute_action_feature_means(states_np, action_dim)
+    feature_dim = int(phi_means_arr.shape[1])
+    w_true_aligned = align_reward_vector(reward_true, feature_dim)
+    w_hat_aligned = align_reward_vector(reward_hat, feature_dim)
+
+    def _lfl_logits(theta_base: np.ndarray, w_vec: np.ndarray) -> np.ndarray:
+        q_vals = phi_means_arr @ w_vec
+        blended = (1.0 - alpha) * theta_base + alpha * q_vals
+        return blended
+
+    logits_true = _lfl_logits(theta_t, w_true_aligned)
+    logits_hat = _lfl_logits(theta_t, w_hat_aligned)
+
+    pi_real = _softmax(theta_tp1)
+    pi_ref = _softmax(logits_true)
+    pi_hat = _softmax(logits_hat)
+
+    if debug:
+        max_diff_hat = float(np.max(np.abs(pi_real - pi_hat)))
+        max_diff_true = float(np.max(np.abs(pi_real - pi_ref)))
+        print("[debug-mismatch] pi_real[:5]      =", pi_real[:5])
+        print("[debug-mismatch] pi_ref_true[:5]  =", pi_ref[:5])
+        print("[debug-mismatch] pi_hat_hatW[:5]  =", pi_hat[:5])
+        print("[debug-mismatch] max|real-hat|    =", max_diff_hat)
+        print("[debug-mismatch] max|real-true|   =", max_diff_true)
+        print("[debug-mismatch] shares_memory(real, hat)?", np.shares_memory(pi_real, pi_hat))
+        print("[debug-mismatch] shares_memory(real, ref)?", np.shares_memory(pi_real, pi_ref))
+
+    idx = rng.choice(len(states_np), size=min(len(states_np), 64), replace=False)
+    kl_vals_1a = [_policy_kl_discrete(pi_real, pi_ref) for _ in idx]
+    kl_vals_1b = [_policy_kl_discrete(pi_real, pi_hat) for _ in idx]
+    err_1a = max(float(np.mean(kl_vals_1a)), 1e-12)
+    err_1b = max(float(np.mean(kl_vals_1b)), 1e-12)
+    diagnostics = {
+        "action_dim": action_dim,
+        "feature_dim": feature_dim,
+        "w_true_norm": float(np.linalg.norm(w_true_aligned)),
+        "w_hat_norm": float(np.linalg.norm(w_hat_aligned)),
+        "theta_step_norm": float(np.linalg.norm(theta_tp1 - theta_t)),
+        "phi_means_shape": list(phi_means_arr.shape),
+        "max_diff_pi_real_hat": float(np.max(np.abs(pi_real - pi_hat))),
+        "max_diff_pi_real_true": float(np.max(np.abs(pi_real - pi_ref))),
+    }
+    return err_1a, err_1b, diagnostics
+
+
 __all__ = [
     "collect_states_from_phase",
+    "compute_action_feature_means",
     "compute_kl_errors",
+    "compute_t2_ma_lfl_kl_errors",
     "compute_weight_pcc",
     "compute_weight_rmse",
     "compute_t2_ilola_kl_errors",
+    "align_reward_vector",
     "kl_mc_gaussian",
 ]

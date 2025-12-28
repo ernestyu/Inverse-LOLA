@@ -34,6 +34,7 @@ def run_ilola_t2(
     num_iters: int = 30,
     alpha_scale: float = 1.0,
     dim_limit: int = 64,
+    seed: int | None = None,
 ):
     """Run multi-step I-LOLA on T2 PPO data.
 
@@ -41,9 +42,9 @@ def run_ilola_t2(
     mode 2: optimize W and scale alphas by a global lambda.
     """
     shared = bool(config.get("shared_policy", True))
-    path, phases = load_latest_t2(Path(config.get("data_dir", "outputs/data/t2")))
+    path, phases = load_latest_t2(Path(config.get("data_dir", "outputs/data/t2")), seed=seed)
     # Stage A estimates (shared or per-agent)
-    stage_a_result, _ = run_ilogel_t2(config, gamma=gamma, num_iters=num_iters)
+    stage_a_result, _ = run_ilogel_t2(config, gamma=gamma, num_iters=num_iters, seed=seed)
 
     # collect theta pairs from phases
     theta_pairs = []
@@ -69,11 +70,12 @@ def run_ilola_t2(
     return result, path, phases
 
 
-def load_latest_t3(data_dir: Path | None = None):
+def load_latest_t3(data_dir: Path | None = None, seed: int | None = None):
     data_dir = data_dir or Path("outputs") / "data" / "t3"
-    files = sorted(data_dir.glob("t3_ppo_seed*.pkl"))
+    pattern = f"t3_ppo_seed{seed}_*.pkl" if seed is not None else "t3_ppo_seed*.pkl"
+    files = sorted(data_dir.glob(pattern))
     if not files:
-        raise SystemExit(f"No T3 data found in {data_dir}. Run gen_data first.")
+        raise SystemExit(f"No T3 data found in {data_dir} (seed={seed}). Run gen_data first.")
     latest = files[-1]
     with latest.open("rb") as f:
         phases = pickle.load(f)
@@ -85,8 +87,9 @@ def run_ilola_t3(
     num_iters: int = 5,
     alpha_scale: float = 0.5,
     dim_limit: int = 16,
+    seed: int | None = None,
 ):
-    path, phases = load_latest_t3(Path(config.get("data_dir", "outputs/data/t3")))
+    path, phases = load_latest_t3(Path(config.get("data_dir", "outputs/data/t3")), seed=seed)
 
     theta_pairs = []
     for phase_idx in range(len(phases) - 1):

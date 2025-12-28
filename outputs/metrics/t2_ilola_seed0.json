@@ -3,7 +3,10 @@
   "algorithm": "ilola",
   "seed": 0,
   "err_1a": 1.0331203639583582e-06,
-  "err_1b": 1.0917134325023588e-06,
-  "final_loss": 0.16620079336124483,
-  "omega_norm": 3.723002598474569
+  "err_1b": 1.3765818830563143e-06,
+  "final_loss": 0.1195486377696153,
+  "omega_norm": 3.9230103954632884,
+  "data_path": "outputs\\data\\t2\\t2_ppo_seed0_20251228-135810.pkl",
+  "data_seed_inferred": 0,
+  "mode": "stageB"
 }

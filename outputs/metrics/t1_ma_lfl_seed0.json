@@ -7,5 +7,8 @@
   "diagnostics": {
     "weight_pcc": -0.4599031980765477,
     "weight_rmse": 0.26929509433099125
-  }
+  },
+  "data_path": "outputs\\data\\t1\\t1_ma_spi_seed0_20251228-135804.pkl",
+  "data_seed_inferred": 0,
+  "mode": "match"
 }

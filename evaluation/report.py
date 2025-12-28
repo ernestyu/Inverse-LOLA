@@ -56,6 +56,10 @@ def generate_report_t1(config_path: str, seed: int = 0):
 def generate_report_t2(config_path: str, seed: int = 0):
     cfg = load_config(config_path)
     metrics_ilola = load_metrics_file("t2", "ilola", seed)
+    induced_path = Path("outputs/induced") / f"t2_induced_seed{seed}.json"
+    induced = json.load(induced_path.open("r", encoding="utf-8")) if induced_path.exists() else None
+    metrics_stageA_path = Path("outputs/metrics") / f"t2_ilogel_stageA_seed{seed}.json"
+    metrics_stageA = json.load(metrics_stageA_path.open("r", encoding="utf-8")) if metrics_stageA_path.exists() else None
 
     lines = []
     lines.append(f"# T2 MPE 报告 (seed={seed})")
@@ -70,10 +74,29 @@ def generate_report_t2(config_path: str, seed: int = 0):
     lines.append(f"- final_loss = {metrics_ilola.get('final_loss', 0.0):.3e}")
     lines.append(f"- omega_norm = {metrics_ilola.get('omega_norm', 0.0):.3e}")
     lines.append("")
+    lines.append("## 说明")
+    lines.append("- 这是将 MA-SPI 模型套用在 PPO 学习者上的错配实验，对比 MA-LfL 的 lookahead 和 I-LOLA。")
+    lines.append("")
     lines.append("## 图表")
     lines.append("")
-    lines.append("1. KL 对比图：")
-    lines.append("   ![](../plots/t2_kl_compare_seed0.png)")
+    lines.append("1. KL 对比图（MA-LfL mismatch vs I-LOLA）：")
+    lines.append("   ![](../plots/t2_kl_compare_mismatch_seed0.png)")
+    lines.append("")
+    lines.append("2. Stage A vs Stage B KL：")
+    lines.append("   ![](../plots/t2_stageA_vs_stageB_seed0.png)")
+    if metrics_stageA is not None:
+        lines.append(f"   - StageA err_1b = {metrics_stageA.get('err_1b', 0.0):.3e}")
+    lines.append(f"   - StageB err_1b = {metrics_ilola.get('err_1b', 0.0):.3e}")
+    if induced is not None:
+        lines.append("")
+        lines.append("3. Induced policy 回报曲线：")
+        lines.append("   ![](../plots/t2_induced_returns_seed0.png)")
+        lines.append(f"   - R_random: {induced.get('R_random', float('nan')):.3f}")
+        r_exp = induced.get("R_expert", None)
+        if r_exp is not None:
+            lines.append(f"   - R_ppo_best: {float(r_exp):.3f}（PPO 各 phase 中平均回报最高者）")
+        else:
+            lines.append("   - R_ppo_best: 暂缺（未找到 PPO phase 或 checkpoint）")
     lines.append("")
     out_dir = Path("outputs/reports")
     out_dir.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,14 @@
+{
+  "env_name": "gridworld",
+  "algorithm": "ma_lfl",
+  "seed": 1,
+  "err_1a": 2.169632352888584e-06,
+  "err_1b": 2.169632352888584e-06,
+  "diagnostics": {
+    "weight_pcc": -0.5347800005407605,
+    "weight_rmse": 0.26915433348663087
+  },
+  "data_path": "outputs\\data\\t1\\t1_ma_spi_seed1_20251228-133723.pkl",
+  "data_seed_inferred": 1,
+  "mode": "match"
+}
